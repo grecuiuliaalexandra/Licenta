@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+{% block scripts %}
+    {{ parent() }}
+    <script>
+
+        $(".test").click(function(){
+
+            $.ajax({
+                type: "POST",
+                url: Routing.generate("form.assign"),
+                success: function (response) {
+                    $(".div1").show();
+                    $(".dropdown-menu").html('');
+
+                    for (index = 0; index < response['data'].length; ++index) {
+                        $(".dropdown-menu").append("<li id="+response['data'][index]['id']+">"+response['data'][index]['name']+"</li>"+"<br/>");
+                    }
+
+                    $('.dropdown-toggle').dropdown();
+                    var departmentList=[];
+                    $(document.body).on('click', '.dropdown-menu li', function (e) {
+                        departmentList.push($(this).attr('id'));
+                        console.log(departmentList);
+                        $(this).css("background-color", "#3399FF");
+
+
+                    });
+                    $(".save").click(function(){console.log(departmentList);});
+                }
+            });
+
+//            $(document.body).on('click', '.save', function () {
+//                console.log('lala');
+//
+//
+//            });
+
+        })
+
+
+
+        $( document ).ready(function() {
+            $(".div1").hide();
+        });
+
+
+
+    </script>
+{% endblock %}
+
+{% block body %}
+    {{ id }}
+    <h2 class="page-header">Form list</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Form</th>
+            <th>Finish date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {%  for competenceGroup in competencesGroups %}
+
+
+
+            <tr>
+                <th scope="row">{{ competenceGroup.id }}</th>
+                <td>{{ competenceGroup.name }}</td>
+
+                <td><a href="/app_dev.php/todos/details/{{ competenceGroup.id }}" class="btn btn-success">View</a></td>
+                <td><a href="#" class="btn btn-primary test">Assign</a></td>
+                <td>
+                    <div class="div1">
+
+                            <div class="dropdown">
+                                <button id="dLabel" class="btn btn-primary" type="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    Departments
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel" id="listaaa">
+
+                                </ul>
+                            </div>
+
+                        <a href="#" class="btn btn-primary save">Save form</a>
+
+                    </div>
+                </td>
+
+            </tr>
+
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+{% endblock %}

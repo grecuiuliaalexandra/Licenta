@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {#<div class="col-lg-6">#}
+        {#<div class="form-group">#}
+            {#{{ form_label(form.name) }}#}
+            {#{{ form_errors(form.name) }}#}
+            {#{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}#}
+        {#</div>#}
+    {#</div>#}
+
+    {#<div class="form-group">#}
+        {#{{ form_widget(form.submit, {'attr': {'class': 'btn btn-sm btn-primary'}})}}#}
+    {#</div>#}
+    {{ form_end(form) }}
+{% endblock %}

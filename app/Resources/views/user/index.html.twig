@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">Latest Todos</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>email</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {%  for user in users %}
+
+
+
+            <tr>
+                <td>{{ user.id }}</td>
+                <th scope="row">{{ user.username }}</th>
+                <td>{{ user.email }}</td>
+                <td><a href="/app_dev.php/users/edit/{{ user.id }}" class="btn btn-primary">Edit</a></td>
+
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,35 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+{% block content %}
+    {#<div class="container">#}
+
+    <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
+        <div class="container">
+
+            {#<section class="m-b-lg">#}
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <div class="row">
+                    <div class="list-group col-xs-4 col-offset-4">
+                        <div class="list-group-item">
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" class="form-control no-border ">
+                        </div>
+                        <div class="list-group-item">
+                            <input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" class="form-control no-border">
+                        </div>
+                    </div>
+                    </div>
+                    <div class='row'>
+                    <div >
+                        <input type="checkbox" id="remember_me" name="_remember_me" checked="checked" />
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+                    </div>
+                    <button type="submit" id="_submit" name="_submit" class="btn btn-lg btn-primary m-r"> {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+                    <a class="btn btn-lg btn-danger" href="{{ path('fos_user_resetting_request') }}">Forgot password?</a>
+                    </div>
+                    <div class="line line-dashed"></div>
+                </form>
+            {#</section>#}
+        </div>
+    </section>
+    {#</div>#}
+{% endblock %}

@@ -1,0 +1,70 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+todos.index:
+    path: /
+    defaults: { _controller: AppBundle:Todo:list }
+
+todos.create:
+    path: /todos/create
+    defaults: { _controller: AppBundle:Todo:create }
+
+todos.edit:
+    path: /todos/edit/{id}
+    defaults: { _controller: AppBundle:Todo:edit }
+
+todos.details:
+    path: /todos/details/{id}
+    defaults: { _controller: AppBundle:Todo:details }
+
+todos.delete:
+    path: /todos/delete/{id}
+    defaults: { _controller: AppBundle:Todo:delete }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+users.list:
+    path: users/list
+    defaults: { _controller: AppBundle:User:list }
+
+users.edit:
+    path: /users/edit/{id}
+    defaults: { _controller: AppBundle:User:edit }
+
+form.create:
+    path: /form/create
+    defaults: { _controller: AppBundle:CompetencesGroup:create }
+
+competences.create:
+    path: /competences/create/{id}
+    defaults: { _controller: AppBundle:Competences:add }
+
+form.complete:
+    path: /form/complete
+    defaults: { _controller: AppBundle:CompetencesGroup:completeForm }
+
+form.list:
+    path: /form/list
+    defaults: { _controller: AppBundle:CompetencesGroup:list }
+
+form.assign:
+    path: /form/assign
+    defaults: { _controller: AppBundle:CompetencesGroup:assign }
+    options:
+      expose: true
+
+evaluation.create:
+    path: /evaluation/create
+    defaults: { _controller: AppBundle:Evaluation:create }
+
+
+
+
+
+
+

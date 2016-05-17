@@ -1,0 +1,137 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Iulia Alexandra
+ * Date: 3/13/2016
+ * Time: 3:18 PM
+ */
+
+namespace AppBundle\Entity;
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="competences")
+ */
+
+
+class Competences
+{
+
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    protected $name;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Forms", inversedBy="competences")
+     * @ORM\JoinColumn(name="id_form", referencedColumnName="id")
+     **/
+    protected $idForm;
+
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Results", mappedBy="idCompetence")
+     */
+    protected $result;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Competences
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set idForm
+     *
+     * @param \AppBundle\Entity\Forms $idForm
+     *
+     * @return Competences
+     */
+    public function setIdForm(\AppBundle\Entity\Forms $idForm = null)
+    {
+        $this->idForm = $idForm;
+
+        return $this;
+    }
+
+    /**
+     * Get idForm
+     *
+     * @return \AppBundle\Entity\Forms
+     */
+    public function getIdForm()
+    {
+        return $this->idForm;
+    }
+
+    /**
+     * Set result
+     *
+     * @param \AppBundle\Entity\Results $result
+     *
+     * @return Competences
+     */
+    public function setResult(\AppBundle\Entity\Results $result = null)
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    /**
+     * Get result
+     *
+     * @return \AppBundle\Entity\Results
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+}

@@ -1,0 +1,49 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Iulia Alexandra
+ * Date: 3/13/2016
+ * Time: 1:36 PM
+ */
+
+namespace AppBundle\Entity;
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="job")
+ */
+
+class Job
+{
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Department", inversedBy="jobs")
+     * @ORM\JoinColumn(name="id_department", referencedColumnName="id")
+     **/
+    protected $idDepartament;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    protected $name;
+
+
+
+
+}
